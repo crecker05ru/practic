@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "presets":[
         ["@babel/preset-env",{
@@ -6,4 +7,14 @@
             ]
         } ]
     ]
+=======
+{
+    "presets":[
+        ["@babel/preset-env",{
+    "targets":[
+    "last 5 versions"
+            ]
+        } ]
+    ]
+>>>>>>> 75a81fb092f6424420c63731db53a384af3cdb9e
 }
