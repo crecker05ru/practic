@@ -14,7 +14,7 @@ export class CreateComponent extends Component{
 
        this.form = new Form(this.$el, {
         title: [Validators.required],
-        fulltext: [Validators.required]
+        fulltext: [Validators.required, Validators.minLength(10)]
        }) 
    }
 }
@@ -29,5 +29,7 @@ if (this.form.isValid()){
     }
     
     console.log('Submit',formData)
+    }else{
+        console.log('Form is invalid')
     }
 }
