@@ -40,7 +40,7 @@ Object.keys(this.controls).forEach(control => {
 
 function setError($control){
     clearError($control)
-    const error = '<p class="validation-error"> Введите корректное значение </p>'
+    const error = '<p class="validation-error"> Введите не менее 10 символов </p>'
     $control.classList.add('invalid')
     $control.insertAdjacentHTML('afterend',error)
 }
