@@ -1,8 +1,9 @@
 import {Component}  from '../core/component'
 import { apiService } from '../services/api.service'
 import {renderPost} from '../templates/post.template'
+
 export class FavoriteComponent extends Component{
-   constructor(id,options) {
+   constructor(id, options) {
        super(id)
        this.loader = options.loader
    } 
@@ -11,11 +12,12 @@ export class FavoriteComponent extends Component{
 this.$el.addEventListener('click',linkClickHandler.bind(this))
    }
 
-   onShow(){
+   onShow() {
     const favorites = JSON.parse(localStorage.getItem('favorites'))
     const html = renderList(favorites)
-    this.$el.insertAdjacentHTML('afterbegin',html)
+    this.$el.insertAdjacentHTML('afterbegin' , html)
    }
+
    onHide(){
      this.$el.innerHTML = ''  
    }
@@ -24,24 +26,22 @@ this.$el.addEventListener('click',linkClickHandler.bind(this))
 async function linkClickHandler(event){
 event.preventDefault()
 
-if (event.target.classList.contains('js-link')){
-const postId = event.target.textContent
+if (event.target.classList.contains('js-link')) {
+const postId = event.target.dataset.id
 this.$el.innerHTML = ''
 this.loader.show()
 const post =  await apiService.fetchPostById(postId)
 this.loader.hide()
-this.$el.insertAdjacentHTML('afterbegin',renderPost(post,{withButton:false}))
+this.$el.insertAdjacentHTML('afterbegin',renderPost(post, {withButton: false}))
 }
 }
 
 
-function renderList(list = []){
-   if (list.length){
+function renderList(list = []) {
+   if (list && list.length) {
     return `
-
     <ul>
-
-    ${list.map(i => `<li><a href='#' class="js-link">${i}</a></li>`).join(' ')}
+    ${list.map(i => `<li><a href="#" class="js-link" data-id="${i.id}">${i.title}</a></li>`).join(' ')}
     </ul>
     `
    }
