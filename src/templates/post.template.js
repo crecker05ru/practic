@@ -11,7 +11,7 @@ export function renderPost(post,options = {}){
     ? `<button class="button-round button-small button-danger"
     data-id="${post.id}" data-title="${post.title}">Delete</button>`
     : `<button class="button-round button-small button-primary"
-    data-id="${post.id}" data-title"${post.title}">Save</button>`
+    data-id="${post.id}" data-title="${post.title}">Save</button>`
 
 return `
     <div class="panel">
